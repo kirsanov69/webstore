@@ -3,15 +3,20 @@ from django.shortcuts import render
 
 def index(request):
     context = {
-    'title': 'Webstore',
-    'content': 'Welcome to the webstore',
-    'list': ['item1', 'item2', 'item3'],
-    'dict': {'item1': 1, 'item2': 2},
-    'is_authenticated': False,
+        'title': 'Webstore - главная',
+        'content': 'Магазин мебели Roga I Kopyta'
+    
 }
 
     return render(request, 'main/index.html', context)
 
 
 def about(request):
-    return HttpResponse("Hello, world. You're at the main about.")
+    context = {
+        'title': 'Webstore - О нас',
+        'content': 'О нас',
+        'text_on_page': 'Магазин мебели Roga I Kopyta - это лучший магазин мебели во всем мире!'
+    
+}
+
+    return render(request, 'main/about.html', context)
