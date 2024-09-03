@@ -15,7 +15,7 @@ def catalog(request, category_slug=None):
     query = request.GET.get('q',None)
 
 
-    if category_slug == 'all':
+    if category_slug == 'vse-tovary':
         goods = Product.objects.all()
     elif query:
         goods = q_search(query)
