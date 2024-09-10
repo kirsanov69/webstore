@@ -14,10 +14,12 @@ def login(request):
             username = request.POST['username']
             password = request.POST['password']
             user = auth.authenticate(username=username, password=password)
+            
             if user:
                 auth.login(request, user)
                 messages.success(request, f'{username}, Вы успешно вошли в систему')
-                if request.POST.get('next', None):
+                redirect_page = request.POST.get('next', None)
+                if redirect_page and redirect_page != reverse('user:logout'):
                     return HttpResponseRedirect(request.POST.get('next'))
                 return HttpResponseRedirect(reverse('main:index'))
     else:
